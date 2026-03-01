@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industrial Engineering | Sam Roels</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem('portfolio-theme') === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <nav class="top-nav">
         <a href="index.html" class="nav-logo">SR.</a>
@@ -67,8 +76,29 @@
                 <a href="https://github.com/SamRoels1" target="_blank">GitHub</a>
             </div>
             <p class="copyright">© 2026 Sam Roels. Built with Python, GSAP, and Vanilla JS.</p>
+            <button id="terminal-trigger">>_ open terminal</button>
         </div>
     </footer>
+
+    <div id="terminal-overlay">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-close" id="close-terminal"></div>
+                <span class="terminal-title">guest@samroels: ~</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+                <p class="sys-msg">Welcome to SamOS v1.0.0</p>
+                <p class="sys-msg">Type 'help' for a list of available commands.</p>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt">guest@samroels:~$</span>
+                <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

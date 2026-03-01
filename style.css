@@ -367,3 +367,185 @@ body {
     font-size: 0.85rem;
     opacity: 0.5;
 }
+
+/* 10. Custom Magnetic Cursor */
+
+/* Only apply this if the user has a real mouse (no touchscreens) */
+@media (pointer: fine) {
+    body, a, button {
+        cursor: none; /* Hides the default computer arrow */
+    }
+
+    .cursor-dot, .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 99999; 
+        pointer-events: none; 
+        opacity: 0; /* Start completely hidden! */
+    }
+
+    .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent-color);
+        transition: opacity 0.3s ease; /* Fade in smoothly */
+    }
+
+    .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--accent-color);
+        /* Added 'opacity 0.3s ease' to the end of this list */
+        transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.3s ease;
+    }
+
+    /* The "Magnetic" Hover State */
+    .cursor-outline.hovering {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(56, 189, 248, 0.15); /* Adds a faint glowing fill */
+        border-color: transparent;
+    }
+}
+
+/* Hide the custom cursor completely on touch devices */
+@media (pointer: coarse) {
+    .cursor-dot, .cursor-outline {
+        display: none;
+    }
+}
+
+/* 11. Typewriter Effect */
+
+.typewriter-text {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.blink-cursor {
+    color: var(--text-color);
+    font-weight: 400;
+    /* This creates the infinite blinking animation */
+    animation: blink 1s step-end infinite;
+}
+
+/* The actual keyframes for the blink */
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 12. Hidden Terminal Easter Egg */
+
+#terminal-trigger {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    opacity: 0.3;
+    font-family: monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: opacity 0.3s;
+}
+
+#terminal-trigger:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* The dark background behind the terminal */
+#terminal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Can't be clicked when hidden */
+    transition: opacity 0.3s ease;
+}
+
+#terminal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* The actual terminal window */
+.terminal-window {
+    width: 90%;
+    max-width: 600px;
+    height: 400px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid #333;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Courier New', Courier, monospace; /* Classic hacker font */
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #444;
+}
+
+/* The red Apple-style close button */
+.terminal-close {
+    width: 12px; height: 12px;
+    background-color: #ff5f56;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.terminal-title {
+    margin-left: 15px;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
+
+.terminal-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    color: #00ff00; /* Neon green text */
+    font-size: 0.95rem;
+}
+
+.terminal-body p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.sys-msg { color: #cccccc; } /* Gray for system messages */
+
+.terminal-input-line {
+    display: flex;
+    padding: 0 15px 15px 15px;
+}
+
+.prompt {
+    color: #38bdf8;
+    margin-right: 10px;
+    font-size: 0.95rem;
+}
+
+#terminal-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none; /* Removes the ugly blue click border */
+}
+
