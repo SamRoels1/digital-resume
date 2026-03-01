@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Roels | Interactive Portfolio</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-logo">SR.</a>
+        
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="industrial.html" class="nav-link">Industrial</a>
+            <a href="product.html" class="nav-link">Product</a>
+            <a href="work.html" class="nav-link">Work</a>
+            <a href="hobbies.html" class="nav-link">Hobbies</a>
+        </div>
+
+        <button id="theme-toggle">☀️ Light Mode</button>
+    </nav>
+    
+    <section id="landing">
+        <div class="landing-content">
+            <h1>Sam Roels</h1>
+            <h2>Engineer | Developer | Creator</h2>
+            <p>Welcome to my interactive resume. Scroll to explore my journey.</p>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <h2 class="section-title">My Journey</h2>
+        
+        <div class="timeline-container">
+            <div class="timeline-line"></div> <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>MSc. Industrial Engineering</h3>
+                    <p class="date">Present</p>
+                    <p>Currently advancing my engineering expertise and solving complex technical challenges.</p>
+                    <a href="industrial.html" class="learn-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>BSc. Product Development</h3>
+                    <p class="date">Graduated</p>
+                    <p>Mastered design, prototyping, and the full lifecycle of product manufacturing.</p>
+                    <a href="product.html" class="learn-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Professional Experience</h3>
+                    <p class="date">2022 - Present</p>
+                    <p>Applying my engineering and development skills to real-world industry problems.</p>
+                    <a href="work.html" class="learn-more">Read More →</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="dashboard">
+        <h2 class="section-title">At a Glance</h2>
+        
+        <div class="dashboard-grid">
+            
+            <div class="dash-card">
+                <h3>Tech Stack</h3>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>JavaScript</span>
+                    <span>HTML/CSS</span>
+                    <span>Git & GitHub</span>
+                    <span>APIs</span>
+                </div>
+            </div>
+
+            <div class="dash-card">
+                <h3>Industry Experience</h3>
+                <p><strong>AI consultant at Katoennatie</strong></p>
+                <p>Briefly describe your biggest win, optimization, or project you delivered in the real world.</p>
+                <a href="work.html" class="learn-more">View Work History →</a>
+            </div>
+
+            <div class="dash-card">
+                <h3>MSc. Highlight</h3>
+                <p><strong>[Name of your best Masters project]</strong></p>
+                <p>Briefly describe the complex technical problem you solved using engineering principles.</p>
+                <a href="industrial.html" class="learn-more">View Engineering →</a>
+            </div>
+
+            <div class="dash-card">
+                <h3>BSc. Highlight</h3>
+                <p><strong>[Name of your best Bachelors project]</strong></p>
+                <p>Briefly describe the product you designed, prototyped, and brought to life.</p>
+                <a href="product.html" class="learn-more">View Product Design →</a>
+            </div>
+
+            <div class="dash-card">
+                <h3>Latest Personal Code</h3>
+                <p><strong>Daily AI News Bot</strong></p>
+                <p>Automated Python application aggregating live global APIs and utilizing Gemini AI for daily briefings.</p>
+                <a href="https://github.com/SamRoels1" class="learn-more" target="_blank">View GitHub →</a>
+            </div>
+
+            <div class="dash-card">
+                <h3>Beyond the Screen</h3>
+                <p>Discover my personal projects, hobbies, and what drives me outside of engineering and coding.</p>
+                <a href="hobbies.html" class="learn-more">Explore Hobbies →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-line"></div>
+        
+        <div class="footer-content">
+            <h2>Let's Connect</h2>
+            <div class="contact-links">
+                <a href="mailto:sam-roels@hotmail.com">sam-roels@hotmail.com</a>
+                <a href="https://www.linkedin.com/in/sam-roels-78a286225/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/SamRoels1" target="_blank">GitHub</a>
+            </div>
+            <p class="copyright">© 2026 Sam Roels. Built with Python, GSAP, and Vanilla JS.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

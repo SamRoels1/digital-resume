@@ -1,0 +1,369 @@
+/* 1. Define the Default Theme (Dark Mode) */
+/* : before root means these variables are available globally, and we can override them for light mode later! */
+:root {
+    --bg-color: #0f172a;      /* Deep dark blue */
+    --text-color: #f8fafc;    /* Off-white for readability */
+    --accent-color: #38bdf8;  /* Bright blue */
+    --nav-bg: rgba(15, 23, 42, 0.8); /* Semi-transparent for sticky nav */
+}
+
+/* 2. Define the Light Mode Overrides */
+/* [] means we are targeting any element with the attribute data-theme="light" */
+[data-theme="light"] {
+    --bg-color: #f8fafc;      /* Light gray */
+    --text-color: #0f172a;    /* Dark slate text */
+    --accent-color: #0284c7;  /* Darker blue for contrast */
+    --nav-bg: rgba(248, 250, 252, 0.8);
+}
+
+/* 3. Global Settings & Smooth Transitions */
+/* * means we are targeting every single element on the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    /* This makes the color swap fade smooth */
+    transition: background-color 0.4s ease, color 0.4s ease; 
+}
+
+/* Defining the body styles using the CSS variables we set up! */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* 4. The Navigation Bar */
+/* . means we are targeting any element with the class "top-nav" */
+.top-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between; /* Spaces out Logo, Links, and Button */
+    align-items: center;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px); /* The frosted glass effect */
+    -webkit-backdrop-filter: blur(12px); /* For Safari support */
+    z-index: 1000;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px; /* Space between each link */
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+/* The Cool Interactive Underline Animation */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Starts at 0 width (invisible) */
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease; /* Smoothly animates the width */
+}
+
+/* Expands the underline on hover OR if it's the active page */
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+#theme-toggle {
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+}
+
+#theme-toggle:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* 5. The Landing Section */
+#landing {
+    height: 100vh; /* Forces the section to be exactly 100% of the screen height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.landing-content h1 {
+    font-size: 4rem;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+}
+
+.landing-content h2 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+/* 6. The Timeline Section */
+#timeline {
+    padding: 100px 20px;
+    max-width: 800px;
+    margin: 0 auto; /* Centers the whole section */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.timeline-container {
+    position: relative;
+}
+
+/* The vertical blue line */
+.timeline-line {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* The invisible container holding the dot and card */
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 50px;
+    opacity: 0; /* Hidden by default! */
+    transform: translateY(40px); /* Pushed down by default! */
+}
+
+/* The little circle on the timeline */
+.timeline-dot {
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* The actual card */
+.timeline-content {
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    padding: 25px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px); /* Pops up slightly when hovered */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.timeline-content .date {
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.learn-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+
+/* 7. The Dashboard Section */
+
+#dashboard {
+    padding: 100px 20px 150px 20px;
+    max-width: 1000px; /* Slightly wider than the timeline */
+    margin: 0 auto;
+}
+
+.dashboard-grid {
+    display: grid;
+    /* This automatically handles screen sizing! */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+}
+
+/* The actual 3D Card */
+.dash-card {
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    padding: 30px;
+    border-radius: 16px;
+    
+    /* These two lines are the secret to 3D depth */
+    transform-style: preserve-3d; 
+    transform: perspective(1000px);
+}
+
+/* Pushing the text outward on the Z-axis */
+.dash-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    transform: translateZ(40px); /* Pops the title way off the card */
+}
+
+.dash-card p, .dash-card .tags, .dash-card a {
+    margin-bottom: 10px;
+    transform: translateZ(20px); /* Pops the text slightly off the card */
+}
+
+/* Styling the skill tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags span {
+    background: var(--accent-color);
+    color: #fff; /* Always keep text white on the blue tag */
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* 8. Sub-Page Specific Styles */
+.page-header {
+    padding: 150px 20px 50px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 100px 20px;
+}
+
+.detail-card {
+    background-color: rgba(128, 128, 128, 0.05);
+    border-left: 4px solid var(--accent-color);
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 0 12px 12px 0;
+}
+
+.detail-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.detail-card .date {
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.detail-card p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* 9. The Footer */
+.site-footer {
+    text-align: center;
+    padding: 20px 20px 60px 20px;
+    width: 100%;
+}
+
+/* The faint line spanning 2/3 of the page */
+.footer-line {
+    width: 66%;
+    height: 1px;
+    background-color: var(--text-color);
+    opacity: 0.15; /* Makes it faint and subtle */
+    margin: 0 auto 40px auto; /* Centers the line and adds space below it */
+}
+
+.footer-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: opacity 0.3s ease;
+}
+
+.contact-links a:hover {
+    opacity: 0.7; /* Fades slightly when hovered */
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.5;
+}
