@@ -29,7 +29,6 @@ if (themeToggleBtn) {
     });
 }
 
-// --- GSAP SCROLL ANIMATIONS ---
 
 // --- GSAP SCROLL ANIMATIONS ---
 
@@ -39,19 +38,35 @@ gsap.registerPlugin(ScrollTrigger);
 // 2. Grab all the timeline cards
 const timelineItems = document.querySelectorAll('.timeline-item');
 
-// 3. Loop through each card and give it an animation
+// 3. Loop through each card and give it an expand animation
 timelineItems.forEach((item) => {
-    gsap.to(item, {
-        scrollTrigger: {
-            trigger: item,
-            start: "top 85%", // Animation starts when the top of the card hits 85% down your screen
-            toggleActions: "play none none reverse" // Plays on the way down, reverses on the way up!
-        },
-        opacity: 1, // Fade it in
-        y: 0,       // Slide it up to its normal position
-        duration: 0.8,
-        ease: "power2.out"
-    });
+    const content = item.querySelector('.timeline-content');
+    const dot = item.querySelector('.timeline-dot');
+    
+    // Animate the center dot popping in first
+    gsap.fromTo(dot, 
+        { scale: 0 }, 
+        { 
+            scrollTrigger: { trigger: item, start: "top 80%", toggleActions: "play none none reverse" }, 
+            scale: 1, 
+            duration: 0.5, 
+            ease: "back.out(2)" 
+        }
+    );
+
+    // Animate the card expanding and fading in slightly after the dot
+    gsap.fromTo(content, 
+        { opacity: 0, scale: 0.8, y: 30 },
+        {
+            scrollTrigger: { trigger: item, start: "top 60%", toggleActions: "play none none reverse" },
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 0.15, // Waits a split second for the dot to appear
+            ease: "power3.out"
+        }
+    );
 });
 
 

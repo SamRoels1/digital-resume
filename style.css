@@ -135,24 +135,28 @@ body {
 /* 6. The Timeline Section */
 #timeline {
     padding: 100px 20px;
-    max-width: 800px;
-    margin: 0 auto; /* Centers the whole section */
+    max-width: 1000px; /* Widened to fit the split layout */
+    margin: 0 auto; 
 }
 
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 60px;
+    margin-bottom: 80px; /* Increased spacing */
 }
 
 .timeline-container {
     position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* The vertical blue line */
+/* Center the line */
 .timeline-line {
     position: absolute;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 0;
     bottom: 0;
     width: 4px;
@@ -160,39 +164,34 @@ body {
     border-radius: 2px;
 }
 
-/* The invisible container holding the dot and card */
+/* Container for each milestone */
 .timeline-item {
     position: relative;
-    padding-left: 60px;
-    margin-bottom: 50px;
-    opacity: 0; /* Hidden by default! */
-    transform: translateY(40px); /* Pushed down by default! */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 120px; /* Significantly increased spacing! */
 }
 
-/* The little circle on the timeline */
-.timeline-dot {
-    position: absolute;
-    left: 12px;
-    top: 5px;
-    width: 20px;
-    height: 20px;
-    background-color: var(--bg-color);
-    border: 4px solid var(--accent-color);
-    border-radius: 50%;
-    z-index: 2;
+/* Push odd items to the left, even to the right */
+.timeline-item:nth-of-type(odd) {
+    justify-content: flex-start;
+}
+.timeline-item:nth-of-type(even) {
+    justify-content: flex-end;
 }
 
 /* The actual card */
 .timeline-content {
+    width: 45%; /* Leaves a 10% gap in the middle for the line */
     background-color: rgba(128, 128, 128, 0.1);
     border: 1px solid rgba(128, 128, 128, 0.2);
     padding: 25px;
     border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px); /* Pops up slightly when hovered */
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
@@ -208,15 +207,58 @@ body {
     font-size: 0.9rem;
 }
 
+/* The center dots */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Perfectly centers it on the line */
+    width: 24px;
+    height: 24px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Mobile Fix: Snap back to the left for small screens */
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 20px;
+        transform: none;
+    }
+    .timeline-item {
+        justify-content: flex-end !important;
+        margin-bottom: 80px;
+    }
+    .timeline-content {
+        width: calc(100% - 60px); /* Fill the remaining space */
+    }
+    .timeline-dot {
+        left: 20px;
+        transform: translateY(-50%);
+    }
+}
+
 .learn-more {
     display: inline-block;
     margin-top: 15px;
-    color: var(--text-color);
+    color: var(--accent-color); /* Forces it to be your bright blue! */
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 800; /* Makes it extra bold */
     border-bottom: 2px solid var(--accent-color);
+    transition: opacity 0.3s ease;
 }
 
+/* Kills the default browser purple for links you've already clicked */
+.learn-more:visited {
+    color: var(--accent-color);
+}
+
+/* Adds a nice little fade effect when you hover over it with your mouse */
+.learn-more:hover {
+    opacity: 0.7;
+}
 
 /* 7. The Dashboard Section */
 
