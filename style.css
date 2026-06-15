@@ -349,19 +349,59 @@ body {
 
 .detail-card .project-img {
     display: block;
-    width: 66%;          /* ~2/3 the width of the card */
-    height: 260px;       /* fixed so every image shares the same footprint */
+    width: 100%;         /* fills the grid card */
+    height: 200px;       /* fixed so every image shares the same footprint */
     object-fit: contain; /* fit the whole render inside the box, no cropping */
     background: #ffffff;  /* renders sit on white, keeps them clean in dark & light mode */
     border-radius: 8px;
-    margin: 0 auto 20px auto; /* centred in the card */
+    margin: 0 auto 20px auto;
 }
 
-@media (max-width: 600px) {
-    .detail-card .project-img {
-        width: 100%;
-        height: 200px;
-    }
+/* Wider content area for the project pages so the grid and toolset breathe */
+.page-content.wide {
+    max-width: 1100px;
+}
+
+/* The Toolset / skills banner — visually distinct from project cards:
+   spans the full width, brighter frosted-glass look */
+.toolset-card {
+    background: rgba(56, 189, 248, 0.10);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 35px 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.toolset-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.toolset-card p {
+    opacity: 0.8;
+    margin-bottom: 22px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.toolset-card .tags {
+    gap: 12px;
+}
+
+/* Project cards laid out in a responsive grid instead of a single column */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-grid .detail-card {
+    margin-bottom: 0; /* grid gap handles the spacing now */
+    display: flex;
+    flex-direction: column;
 }
 
 .detail-card h2 {
