@@ -359,20 +359,20 @@ body {
 
 /* Wider content area for the project pages so the grid and toolset breathe */
 .page-content.wide {
-    max-width: 1100px;
+    max-width: 1200px;
 }
 
 /* The Toolset / skills banner — visually distinct from project cards:
-   spans the full width, brighter frosted-glass look */
+   spans almost the full page width, brighter frosted-glass look */
 .toolset-card {
-    background: rgba(56, 189, 248, 0.10);
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 16px;
-    padding: 35px 40px;
-    margin-bottom: 50px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.20), rgba(56, 189, 248, 0.07));
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 40px 45px;
+    margin-bottom: 80px; /* clear gap before the projects grid */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
 }
 
 .toolset-card h2 {
