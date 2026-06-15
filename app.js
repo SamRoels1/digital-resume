@@ -269,10 +269,10 @@ if (terminalInput) {
                         printLine('Available commands: <br> - <b>skills</b>: View tech stack<br> - <b>about</b>: View short bio<br> - <b>clear</b>: Clear the terminal<br> - <b>sudo hire sam</b>: Execute admin hiring protocols');
                         break;
                     case 'skills':
-                        printLine('Python | JavaScript | HTML/CSS | REST APIs | Git | GSAP');
+                        printLine('Python | C/C++ | Machine &amp; Deep Learning | Embedded Systems | Microcontrollers | PCB Design | 3D CAD | MBSE | Git | LLM Integration');
                         break;
                     case 'about':
-                        printLine('Industrial Engineer & Creative Developer based in Antwerp.');
+                        printLine('Industrial Engineer (Electronics-ICT, Cyber-Physical Systems) &amp; Product Developer based in Antwerp. Looking for R&amp;D roles in AI, software &amp; hardware.');
                         break;
                     case 'clear':
                         terminalBody.innerHTML = '';
