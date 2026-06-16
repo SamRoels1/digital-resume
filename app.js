@@ -272,7 +272,7 @@ if (terminalInput) {
                         printLine('Python | C/C++ | Machine &amp; Deep Learning | Embedded Systems | Microcontrollers | PCB Design | 3D CAD | MBSE | Git | LLM Integration');
                         break;
                     case 'about':
-                        printLine('Industrial Engineer (Electronics-ICT, Cyber-Physical Systems) &amp; Product Developer based in Antwerp. Looking for R&amp;D roles in AI, software &amp; hardware.');
+                        printLine('Industrial Engineer (Electronics-ICT, Cyber-Physical Systems) &amp; Product Developer based in Antwerp. Looking for roles in R&amp;D, AI, software &amp; hardware.');
                         break;
                     case 'clear':
                         terminalBody.innerHTML = '';
