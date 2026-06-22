@@ -366,7 +366,7 @@ body {
 .detail-card:has(.project-img)::after {
     content: "\1F50D";
     position: absolute;
-    top: 40px;
+    top: 244px;
     right: 40px;
     width: 36px;
     height: 36px;
