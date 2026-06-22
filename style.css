@@ -350,11 +350,75 @@ body {
 .detail-card .project-img {
     display: block;
     width: 100%;         /* fills the grid card */
-    height: 200px;       /* fixed so every image shares the same footprint */
+    height: 260px;       /* fixed so every image shares the same footprint */
     object-fit: contain; /* fit the whole render inside the box, no cropping */
     background: #ffffff;  /* renders sit on white, keeps them clean in dark & light mode */
     border-radius: 8px;
     margin: 0 auto 20px auto;
+    cursor: zoom-in;
+}
+
+/* Clear "enlarge" icon overlaid on any card that has a project image */
+.detail-card:has(.project-img) {
+    position: relative;
+}
+
+.detail-card:has(.project-img)::after {
+    content: "\1F50D";
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    pointer-events: none; /* clicks pass through to the image underneath */
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.detail-card:has(.project-img):hover::after {
+    transform: scale(1.15);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Fullscreen image lightbox */
+#image-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 50px;
+}
+
+#image-lightbox.active {
+    display: flex;
+}
+
+#image-lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
+}
+
+#image-lightbox .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
 }
 
 /* Wider content area for the project pages so the grid and toolset breathe */

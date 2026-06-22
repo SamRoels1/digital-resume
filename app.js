@@ -245,6 +245,39 @@ if (triggerBtn && terminalOverlay) {
     });
 }
 
+// --- IMAGE LIGHTBOX (click any project image to enlarge) ---
+
+const lightbox = document.getElementById('image-lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCloseBtn = document.getElementById('lightbox-close');
+
+if (lightbox && lightboxImg) {
+    document.querySelectorAll('.project-img').forEach((img) => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+        });
+    });
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+    };
+
+    if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+
+    // Close when clicking the dark background, not the image itself
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+}
+
 // 2. A helper function to print text to the screen
 function printLine(text) {
     const newLine = document.createElement('p');
